@@ -62,7 +62,7 @@ function ContatosBanner() {
 }
 
 function ConsultoraDestaque() {
-  const phone = '5589981190165';
+  const phone = '5589981432568';
   const link = `https://wa.me/${phone}?text=${encodeURIComponent('Olá, Sabrina! Vim pelo site da Cardoso Veículos.')}`;
 
   return (

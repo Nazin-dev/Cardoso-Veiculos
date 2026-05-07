@@ -265,7 +265,11 @@ function CarCard({ car, featured }) {
         transition: 'transform 0.3s, border-color 0.3s'
       }}
     >
-      <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--ink-1)' }}>
+      <div
+        style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--ink-1)',
+                 cursor: car.gallery.length > 1 ? 'pointer' : 'default' }}
+        onClick={() => { if (car.gallery.length > 1) setIdx(i => (i + 1) % car.gallery.length); }}
+      >
         {car.gallery.map((src, i) => (
           <img key={i} src={src} alt={car.model}
                style={{
@@ -279,7 +283,8 @@ function CarCard({ car, featured }) {
         ))}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(180deg, rgba(6,8,11,0.4) 0%, transparent 30%, rgba(6,8,11,0.55) 100%)'
+          background: 'linear-gradient(180deg, rgba(6,8,11,0.4) 0%, transparent 30%, rgba(6,8,11,0.55) 100%)',
+          pointerEvents: 'none'
         }} />
         {car.highlight && (
           <span style={{
@@ -290,20 +295,35 @@ function CarCard({ car, featured }) {
             fontSize: 10, fontWeight: 600,
             letterSpacing: '0.2em', textTransform: 'uppercase',
             borderRadius: 4,
-            fontFamily: 'JetBrains Mono, monospace'
+            fontFamily: 'JetBrains Mono, monospace',
+            pointerEvents: 'none'
           }}>{car.highlight}</span>
         )}
         {car.gallery.length > 1 && (
           <div style={{
-            position: 'absolute', bottom: 12, left: 12, right: 12,
-            display: 'flex', gap: 4, justifyContent: 'center'
+            position: 'absolute', bottom: 0, left: 0, right: 0,
+            display: 'flex', gap: 4, justifyContent: 'center',
+            padding: '20px 12px 10px',
           }}>
             {car.gallery.map((_, i) => (
-              <span key={i} style={{
-                height: 3, flex: 1, maxWidth: 28,
-                background: idx === i ? 'var(--petrol-300)' : 'rgba(255,255,255,0.25)',
-                borderRadius: 2, transition: 'background 0.3s'
-              }} />
+              <button
+                key={i}
+                onClick={(e) => { e.stopPropagation(); setIdx(i); }}
+                style={{
+                  flex: 1, maxWidth: 28,
+                  height: 20,
+                  background: 'none', border: 'none',
+                  cursor: 'pointer', padding: '8px 0',
+                  display: 'flex', alignItems: 'center',
+                }}
+                aria-label={`Foto ${i + 1}`}
+              >
+                <span style={{
+                  display: 'block', height: 3, width: '100%',
+                  background: idx === i ? 'var(--petrol-300)' : 'rgba(255,255,255,0.3)',
+                  borderRadius: 2, transition: 'background 0.3s'
+                }} />
+              </button>
             ))}
           </div>
         )}

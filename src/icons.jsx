@@ -35,4 +35,5 @@ const IconSpark      = (p) => <BI name="stars" {...p} />;
 Object.assign(window, {
   IconShield, IconHandshake, IconWrench, IconCalculator, IconCar, IconQuote,
   IconMap, IconClock, IconPhone, IconMail, IconWhatsApp, IconInstagram,
-  IconArrow, IconCheck, IconStar, IconMenu, IconClose, IconChevron, IconLeaf, IconPin, IconSpa
+  IconArrow, IconCheck, IconStar, IconMenu, IconClose, IconChevron, IconLeaf, IconPin, IconSpark
+});
