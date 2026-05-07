@@ -11,7 +11,7 @@ const BI = ({ name, size = 20, style = {}, className = '' }) => (
 );
 
 const IconShield     = (p) => <BI name="shield-check" {...p} />;
-const IconHandshake  = (p) => <BI name="handshake" {...p} />;
+const IconHandshake  = (p) => <BI name="arrow-left-right" {...p} />;
 const IconWrench     = (p) => <BI name="wrench-adjustable" {...p} />;
 const IconCalculator = (p) => <BI name="calculator" {...p} />;
 const IconCar        = (p) => <BI name="car-front-fill" {...p} />;
